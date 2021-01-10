@@ -17,7 +17,7 @@ Role Variables
 
 No Variable is used in this role, although there are some points to be noted:
 <br />
-<b>*  All the instances launched to act as Webservers, should be launched having a key as "Type" & value as "Webservers". <i>(It is case-sensitive)</i> </b>
+<b>Note:  All the instances launched to act as Webservers, should be launched having a key as "Type" & value as "Webservers". <i>(It is case-sensitive)</i> </b>
 
 Dependencies
 ------------
