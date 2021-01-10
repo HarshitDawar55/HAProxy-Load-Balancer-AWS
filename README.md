@@ -1,17 +1,23 @@
-Role Name
+HAProxy-Load-Balancer-AWS
 =========
 
-A brief description of the role goes here.
+This role is designed to install & configure the HAProxy Load Balancer specifically for AWS, although it can be used anywhere else, then only firewall rules has to be taken into consideration!
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+* boto package(because EC2 Module is used).
+* ec2-scripts which will fetch the IP of the EC2 instances dynamically(if dynamic inventory of Ansible is used!).
+    * [ec2.py](https://github.com/HarshitDawar55/Ansible/blob/master/Dynamic-Inventory/ec2.py)
+    * [ec2.ini](https://github.com/HarshitDawar55/Ansible/blob/master/Dynamic-Inventory/ec2.in)
+* If the dynamic Inventory is used, hosts should be assigned using the tags given to the instances! 
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+No Variable is used in this role, although there are some points to be noted:
+<br />
+<b>*  All the instances launched to act as Webservers, should be launched having a key as "Type" & value as "Webservers". <i>(It is case-sensitive)</i> </b>
 
 Dependencies
 ------------
@@ -23,16 +29,16 @@ Example Playbook
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-    - hosts: servers
+    - hosts: tag_Type_LB
       roles:
-         - { role: username.rolename, x: 42 }
+         - HAProxy-LB-AWS
 
 License
 -------
 
-BSD
+[MIT](https://github.com/HarshitDawar55/HAProxy-Load-Balancer-AWS/blob/master/LICENSE)
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+[Harshit Dawar](https://www.linkedin.com/in/harshitdawar)
