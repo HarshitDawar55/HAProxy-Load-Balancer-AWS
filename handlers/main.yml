@@ -1,0 +1,16 @@
+---
+# handlers file for HAProxy-LB-AWS
+- name: Removing the unneccessary code from the configuration file of HAProxy!
+  become: yes
+  replace:
+    backup: yes
+    path: "/etc/haproxy/haproxy.cfg"
+    # Replacing everything after "backend app" in the configuration file of the HAProxy!
+    after: "backend app"
+    regexp: "^(.+)$"
+    replace: ""
+
+- name: Restart HAProxy
+  service:
+    name: haproxy
+    state: restarted
