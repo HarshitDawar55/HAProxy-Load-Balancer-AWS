@@ -1,0 +1,40 @@
+---
+# tasks file for HAProxy-LB-AWS
+- name: Installing HAProxy software!
+  become: yes
+  notify: Removing the unneccessary code from the configuration file of HAProxy!
+  package:
+    name: haproxy
+    state: latest
+  register: Installation_Status
+
+- name: Making the Load Balancer listen on port 80!
+  when: Installation_Status.rc == 0
+  lineinfile:
+    path: "/etc/haproxy/haproxy.cfg"
+    regexp: "frontend  main"
+    line: "frontend  main *:80"
+    # If the regular expression does not match, then the file will be unchanged!
+    backrefs: yes
+
+- name: Handler Calling
+  meta: flush_handlers
+
+- name: Adding Webservers Details to the Configuration File of HAProxy!
+  when: Installation_Status.rc == 0
+  notify: Restart HAProxy
+  blockinfile:
+    path: "/etc/haproxy/haproxy.cfg"
+    backup: yes
+    insertafter: "backend app"
+    block: |
+      {%   for hosts in groups['tag_Type_Webservers']   %}
+          server app{{ loop.index }} {{  hosts  }}:80 check
+      {%   endfor   %}
+
+- name: Starting the services of HAProxy!
+  when: Installation_Status.rc == 0
+  service:
+    name: haproxy
+    state: started
+    enabled: yes
