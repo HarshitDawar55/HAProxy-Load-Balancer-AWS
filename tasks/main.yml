@@ -5,7 +5,7 @@
   notify: Removing the unneccessary code from the configuration file of HAProxy!
   package:
     name: haproxy
-    state: latest
+    state: present
   register: Installation_Status
 
 - name: Making the Load Balancer listen on port 80!
