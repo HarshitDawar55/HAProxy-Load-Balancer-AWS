@@ -1,4 +1,4 @@
-<img src = "https://img.shields.io/badge/version-1.1.0-brightgreen" />
+<img src = "https://img.shields.io/badge/version-1.2.0-brightgreen" />
 
 HAProxy-Load-Balancer-AWS
 =========
