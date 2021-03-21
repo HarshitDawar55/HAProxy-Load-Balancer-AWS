@@ -41,4 +41,14 @@ License
 Author Information
 ------------------
 
-[Harshit Dawar](https://www.linkedin.com/in/harshitdawar)
+Developed by Harshit Dawar, also known as Technologist, a public speaker, extrovert, & optimist.
+
+**LinkedIn:** https://www.linkedin.com/in/harshitdawar
+
+**PortFolio:** https://harshitdawar55.github.io
+
+**Twitter:** https://www.twitter.com/harshitdawar55
+
+**Medium:** https://harshitdawar.medium.com
+
+**GitHub:** https://www.github.com/harshitdawar55
